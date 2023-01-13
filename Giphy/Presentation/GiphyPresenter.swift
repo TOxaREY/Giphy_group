@@ -66,9 +66,11 @@ final class GiphyPresenter: GiphyPresenterProtocol {
     func tappedButton(yes yesButton: Bool, image: UIImage?) {
         viewController?.yesNoButtonsLock()
         if showdGifCounter == 10 {
+            if yesButton {
+                likedGifCounter += 1
+            }
             viewController?.showEndOfGiphy(message: "Вам понравилось: \(likedGifCounter)/10")
         } else {
-            updateCounterLabel()
             if yesButton {
                 likedGifCounter += 1
                 saveGif(image)
@@ -83,6 +85,7 @@ final class GiphyPresenter: GiphyPresenterProtocol {
                 guard let self = self else { return }
                 self.viewController?.giphyImageViewAlpha(alpha: 1.0)
                 self.viewController?.giphyImageViewClearColor()
+                self.updateCounterLabel()
                 self.fetchNextGiphy()
             }
         }
