@@ -14,6 +14,7 @@ final class GiphyViewController: UIViewController {
     
     @IBOutlet weak var noButton: UIButton!
     @IBOutlet weak var yesButton: UIButton!
+    @IBOutlet weak var gifLabel: UILabel!
     
     private var alertPresenter: AlertPresenter?
     
@@ -61,6 +62,7 @@ final class GiphyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        gifLabel.text = NSLocalizedString("Gif", comment: "gif label")
         alertPresenter = AlertPresenter(viewController: self)
         presenter.restart()
     }
@@ -88,7 +90,7 @@ extension GiphyViewController: GiphyViewControllerProtocol {
         //
         // При нажатии на кнопку необходимо перезагрузить гифку
         hideLoader()
-        alertPresenter?.show(alertModel: AlertModel(title: "Что-то пошло не так(", message: "не возможно загрузить данные", buttonText: "Попробовать еще раз", completion: { [weak self] in
+        alertPresenter?.show(alertModel: AlertModel(title: NSLocalizedString("Wrong", comment: "Wrong title alert"), message: NSLocalizedString("Unable load", comment: "message alert unable load"), buttonText: NSLocalizedString("Try again", comment: "try again button"), completion: { [weak self] in
             guard let self = self else { return }
             self.presenter.fetchNextGiphy()
         }))
@@ -101,7 +103,7 @@ extension GiphyViewController: GiphyViewControllerProtocol {
         // Кнопка -- Хочу посмотреть еще гифок
         //
         // При нажатии сбросить все счетчики -- вызов метода restart
-        alertPresenter?.show(alertModel: AlertModel(title: "Мемы закончились!", message: message, buttonText: "Хочу посмотреть еще гифок", completion: { [weak self] in
+        alertPresenter?.show(alertModel: AlertModel(title: NSLocalizedString("Memes over", comment: "Memes over title alert"), message: message, buttonText: NSLocalizedString("More gifs", comment: "more gifs button"), completion: { [weak self] in
             guard let self = self else { return }
             self.presenter.restart()
         }))

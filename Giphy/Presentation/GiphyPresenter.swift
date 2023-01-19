@@ -4,6 +4,7 @@ import Photos
 
 // Presetner (бизнес слой для получения слудеющей гифки)
 final class GiphyPresenter: GiphyPresenterProtocol {
+    private let maxGifCount = 10
     private var giphyFactory: GiphyFactoryProtocol
     // Переменная Int -- Счетчик залайканых или задизлайканных гифок
     // Например showdGifCounter -- счетчика показанных гифок
@@ -50,7 +51,7 @@ final class GiphyPresenter: GiphyPresenterProtocol {
     // Обновляем счетчик просмотренных гифок UIlabel
     func updateCounterLabel() {
         showdGifCounter += 1
-        viewController?.counterLabelText(text: "\(showdGifCounter)/10")
+        viewController?.counterLabelText(text: "\(showdGifCounter)/\(maxGifCount)")
     }
     
     // Перезапускаем счетчики просмотренных гифок и понравивишихся гифок
@@ -59,17 +60,17 @@ final class GiphyPresenter: GiphyPresenterProtocol {
     func restart() {
         showdGifCounter = 1
         likedGifCounter = 0
-        viewController?.counterLabelText(text: "\(showdGifCounter)/10")
+        viewController?.counterLabelText(text: "\(showdGifCounter)/\(maxGifCount)")
         fetchNextGiphy()
     }
     
     func tappedButton(yes yesButton: Bool, image: UIImage?) {
         viewController?.yesNoButtonsLock()
-        if showdGifCounter == 10 {
+        if showdGifCounter == maxGifCount {
             if yesButton {
                 likedGifCounter += 1
             }
-            viewController?.showEndOfGiphy(message: "Вам понравилось: \(likedGifCounter)/10")
+            viewController?.showEndOfGiphy(message: NSLocalizedString("Like it", comment: "like alert message") + "\(likedGifCounter)/\(maxGifCount)")
         } else {
             if yesButton {
                 likedGifCounter += 1

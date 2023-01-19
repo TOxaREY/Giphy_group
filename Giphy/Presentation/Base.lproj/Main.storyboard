@@ -117,6 +117,7 @@
                     </view>
                     <connections>
                         <outlet property="counterLabel" destination="R8Y-j4-zFS" id="Zig-Jy-bvV"/>
+                        <outlet property="gifLabel" destination="gU9-Na-HwF" id="hZq-x1-WYx"/>
                         <outlet property="giphyActivityIndicatorView" destination="ffa-a1-m1O" id="cra-TY-q2f"/>
                         <outlet property="giphyImageView" destination="Efa-qp-BnZ" id="hwE-Ia-iUD"/>
                         <outlet property="noButton" destination="mMP-2e-cQ9" id="8Ky-wE-Xsl"/>
