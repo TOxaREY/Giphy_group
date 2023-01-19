@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  Giphy
+
+  Created by Anton Reynikov on 19.01.2023.
+  
+*/
+"Wrong" = "Что-то пошло не так(";
+"Unable load" = "не возможно загрузить данные";
+"Try again" = "Попробовать еще раз";
+"Memes over" = "Мемы закончились!";
+"More gifs" = "Хочу посмотреть еще гифок";
+"Like it" = "Вам понравилось: ";
+"Gif" = "Гифка:";
